@@ -47,9 +47,9 @@ fn dfs(start: Node<char>) {
 
 fn bfs(start: Node<char>) {
     let mut fringe = vec![];
-    (&mut fringe).push(start);
-    while !(&mut fringe).is_empty() {
-        let n = (&mut fringe).pop().unwrap();
+    fringe.push(start);
+    while !fringe.is_empty() {
+        let n = fringe.pop().unwrap();
         println!("{:?}", n.value);
         for child in n.children {
             fringe.insert(0, child);
