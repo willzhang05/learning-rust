@@ -2,32 +2,36 @@
 static N: usize = 8;
 
 
-fn check_valid(last: usize, queens: &mut Vec<usize>) { //where last is index of last placed queen
+fn check_valid(last: usize, queens: &Vec<usize>) -> bool { //where last is index of last placed queen
     for x in 0..queens.len() {
         if x != last && queens[x] != 0 {
-            let mut dx = last - x;
+            let mut dx = (last - x) as i32;
             dx = dx.abs();
-            let mut dy = queens[last] - queens[x];
+            let mut dy = (queens[last] - queens[x]) as i32;
             dy = dy.abs();
             if dx == dy {
                 return false;
             }
         }
     }
-    return true;
+    true
 }
 
-fn valid(queens: &mut Vec<usize>) {
-    if queens.len() == 0 {
-    
- 0 in queens) {
+fn valid(queens: &Vec<usize>) -> bool {
+    if queens.len() as i32 == 0 {
         return false;
     }
-    return true;
+    for i in 0..queens.len() {
+        
+        if i == 0 {
+            return false;
+        }
+    }
+    true
 }
 
 
-fn print_board(queens: &mut Vec<usize>) {
+fn print_board(queens: &Vec<usize>) {
     println!("");
     for r in 0..queens.len() {
         let mut out = vec!['_'; queens.len()];
@@ -42,14 +46,15 @@ fn print_board(queens: &mut Vec<usize>) {
     }
     println!("");
 }
+        
+fn solve<'a, 'b>(variables: &'a Vec<usize>, values: &'a Vec<usize>, board: &'b Vec<usize>) -> Option<&'b Vec<usize>> {
+    if valid(board) {
+        return Some(board);
+    }
     
-fn solve(variables: &mut Vec<usize>, values: &mut Vec<usize>, board: &mut Vec<usize>) {
-    /*if valid(board):
-        return board
-
-    new_vars = variables[:]
-    choose_var = None
-    if len(new_vars) > 0:
+    let mut new_vars = variables.clone();
+    let mut choose_var: Option<usize> = None;
+    /*if len(new_vars) > 0:
         choose_var = new_vars.pop() - 1
 
     random.shuffle(new_vars)
@@ -68,6 +73,7 @@ fn solve(variables: &mut Vec<usize>, values: &mut Vec<usize>, board: &mut Vec<us
                 if result is not None:
                     return result
     return None*/
+    None
 }
     
 fn main() {
