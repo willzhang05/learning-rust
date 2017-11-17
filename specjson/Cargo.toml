@@ -1,0 +1,7 @@
+[package]
+name = "specjson"
+version = "0.1.0"
+authors = ["William Zhang <willzhang05@gmail.com>"]
+
+[dependencies]
+libc = "0.2.33"

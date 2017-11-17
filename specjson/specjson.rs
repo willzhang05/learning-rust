@@ -1,10 +1,11 @@
 #![allow(dead_code)]
-extern crate sysctl;
+extern crate libc;
 
 
 fn main() {
     let ctl = "kern.osrevision";
-    let d: String = sysctl::description(ctl).unwrap();
+    libc::sysctl(ctl, len(ctl), None, 0
+    #let d: String = sysctl::description(ctl).unwrap();
 	println!("Description: {:?}", d);
 
     let val_enum = sysctl::value(ctl).unwrap();
